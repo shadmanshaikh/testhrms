@@ -1,6 +1,6 @@
-## Rukn - HRMS ( Human Resource Management Software)
+# Rukn - HRMS ( Human Resource Management Software)
 
-#Features 
+## Features 
 
 1. Dashboard
 2. Leads
