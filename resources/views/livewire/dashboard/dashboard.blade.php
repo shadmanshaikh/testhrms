@@ -21,8 +21,10 @@ new class extends Component {
         </x-slot:middle>
     </x-header>
     <div class="flex gap-3">
-
-  
+        <x-card title="No. of Male Employees">
+                
+        </x-card>
+    
 
     </div>
 </div>
