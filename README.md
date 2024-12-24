@@ -14,3 +14,11 @@
     7c. Interviews
 8. Settings
 9. Dark Mode
+
+## Demo Screenshots
+
+![dept](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/dept.png)
+
+![leads](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/leads.png)
+
+![shortlist](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/shortlist.png)
