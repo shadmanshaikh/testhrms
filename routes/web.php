@@ -21,3 +21,8 @@ Volt::route('/jobs', 'recruitment.jobs');
 Volt::route('/shortlist', 'recruitment.shortlist');
 Volt::route('/interviews', 'recruitment.interview');
 
+//payroll
+
+Volt::route('/payroll/index' , 'payroll.index');
+
+

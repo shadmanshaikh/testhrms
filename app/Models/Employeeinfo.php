@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Employee extends Model
+class Employeeinfo extends Model
 {
+    protected $table = 'employeeinfos';
     protected $fillable = [
-        'firstname',
+        'id',   
+        'name',
         'lastname',
         'gender',
         'email',

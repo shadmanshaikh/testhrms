@@ -61,6 +61,9 @@
                     <x-menu-item title="Shortlist" icon="o-document-text" link="/shortlist" />
                     <x-menu-item title="Interviews" icon="o-calendar" link="/interviews" />
                 </x-menu-sub>
+                <x-menu-sub title="Payroll" icon="o-currency-dollar">
+                    <x-menu-item title="Employee Salaries" icon="o-calculator" link="/payroll/index" />
+                </x-menu-sub>
                 <x-menu-sub title="Settings" icon="o-cog-6-tooth">
                     <x-menu-item title="Wifi" icon="o-wifi" link="####" />
                     <x-menu-item title="Archives" icon="o-archive-box" link="####" />
