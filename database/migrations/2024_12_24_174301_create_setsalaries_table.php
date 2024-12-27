@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('setsalaries', function (Blueprint $table) {
             $table->id();
-            $table->integer('emp_id');
+            $table->string('emp_id');
             $table->string('name');
             $table->decimal('base', 8, 2);
             $table->date('joiningdate');

@@ -24,5 +24,7 @@ Volt::route('/interviews', 'recruitment.interview');
 //payroll
 
 Volt::route('/payroll/index' , 'payroll.index');
+Volt::route('/payroll/generate' , 'payroll.generate');
+Volt::route('/payroll/generate/generate-slip' , 'payroll.generate-slip');
 
 

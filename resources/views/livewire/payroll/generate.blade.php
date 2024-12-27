@@ -1,15 +1,13 @@
 <?php
 
-use App\Models\Employeeinfo;
 use App\Models\User;
 use Illuminate\Support\Collection;
 use Livewire\Volt\Component;
 use Mary\Traits\Toast;
-use Livewire\WithPagination;
 
 new class extends Component {
     use Toast;
-    use WithPagination;
+
     public string $search = '';
 
     public bool $drawer = false;
@@ -34,8 +32,8 @@ new class extends Component {
     {
         return [
             ['key' => 'id', 'label' => '#', 'class' => 'w-1'],
-            ['key' => 'employee_id', 'label' => 'EMP ID', 'class' => 'w-1'],
             ['key' => 'name', 'label' => 'Name', 'class' => 'w-64'],
+            ['key' => 'age', 'label' => 'Age', 'class' => 'w-20'],
             ['key' => 'email', 'label' => 'E-mail', 'sortable' => false],
         ];
     }
@@ -48,8 +46,11 @@ new class extends Component {
      */
     public function users(): Collection
     {
-        $emp = Employeeinfo::all();
-        return $emp
+        return collect([
+            ['id' => 1, 'name' => 'Mary', 'email' => 'mary@mary-ui.com', 'age' => 23],
+            ['id' => 2, 'name' => 'Giovanna', 'email' => 'giovanna@mary-ui.com', 'age' => 7],
+            ['id' => 3, 'name' => 'Marina', 'email' => 'marina@mary-ui.com', 'age' => 5],
+        ])
             ->sortBy([[...array_values($this->sortBy)]])
             ->when($this->search, function (Collection $collection) {
                 return $collection->filter(fn(array $item) => str($item['name'])->contains($this->search, true));
@@ -67,7 +68,7 @@ new class extends Component {
 
 <div>
     <!-- HEADER -->
-    <x-header title="Employee List" separator progress-indicator with-pagination>
+    <x-header title="Generate Salary Slip" separator progress-indicator>
         <x-slot:middle class="!justify-end">
             <x-input placeholder="Search..." wire:model.live.debounce="search" clearable icon="o-magnifying-glass" />
         </x-slot:middle>
@@ -75,13 +76,18 @@ new class extends Component {
             <x-button label="Filters" @click="$wire.drawer = true" responsive icon="o-funnel" />
         </x-slot:actions>
     </x-header>
-    <div class="mt-3 mb-3 flex justify-end">
-        <x-button icon="o-plus" label="Employee" class="btn-primary btn-sm" link="/add-employee"/>
+
+    <div class="flex justify-end">
+        <x-button icon="o-plus" class="btn-sm btn-primary mb-3" label="generate" link="generate/generate-slip"></x-button>
     </div>
+
+
     <!-- TABLE  -->
     <x-card>
         <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy">
-    
+            @scope('actions', $user)
+            <x-button icon="o-trash" wire:click="delete({{ $user['id'] }})" wire:confirm="Are you sure?" spinner class="btn-ghost btn-sm text-red-500" />
+            @endscope
         </x-table>
     </x-card>
 

@@ -62,6 +62,7 @@
                     <x-menu-item title="Interviews" icon="o-calendar" link="/interviews" />
                 </x-menu-sub>
                 <x-menu-sub title="Payroll" icon="o-currency-dollar">
+                    <x-menu-item title="Generate Salary" icon="o-calculator" link="/payroll/generate" />
                     <x-menu-item title="Employee Salaries" icon="o-calculator" link="/payroll/index" />
                 </x-menu-sub>
                 <x-menu-sub title="Settings" icon="o-cog-6-tooth">
