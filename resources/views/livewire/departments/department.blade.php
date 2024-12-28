@@ -148,10 +148,10 @@ new class extends Component {
     <x-button responsive icon="o-plus" label="Department" class="btn-primary btn-sm" wire:click="$toggle('showDrawer2')" />
 </div>
     <!-- TABLE  -->
-    <x-card>
-        <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy" with-pagination>
+    <x-card class="shadow-lg rounded-lg bg-white p-4">
+        <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy" with-pagination class="table-auto w-full">
             @scope('actions', $user)
-            <x-button icon="o-trash" wire:click="delete({{ $user['id'] }})" wire:confirm="Are you sure?" spinner class="btn-ghost btn-sm text-red-500" />
+            <x-button icon="o-trash" wire:click="delete({{ $user['id'] }})" wire:confirm="Are you sure?" spinner class="btn-ghost btn-sm text-red-500 hover:text-red-700" />
             @endscope
 
             @scope('cell_status', $department)

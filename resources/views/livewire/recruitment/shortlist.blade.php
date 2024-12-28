@@ -4,13 +4,19 @@ use App\Models\User;
 use Illuminate\Support\Collection;
 use Livewire\Volt\Component;
 use Mary\Traits\Toast;
+use App\Models\Shortlist;
+
 
 new class extends Component {
     use Toast;
 
     public string $search = '';
-
+    public bool $showDrawer2 = false;
     public bool $drawer = false;
+    public string $name = '';
+    public string $email = '';
+    public string $phone = '';
+    public string $status = '';
 
     public array $sortBy = ['column' => 'name', 'direction' => 'asc'];
 
@@ -28,33 +34,37 @@ new class extends Component {
     }
 
     // Table headers
+
+    public function saveShortlist(){
+        $shortlist = new Shortlist;
+        $shortlist->name = $this->name;
+        $shortlist->email = $this->email;
+        $shortlist->phone = $this->phone;
+        $shortlist->status = $this->status;
+        $shortlist->save();
+        $this->success('Shortlist saved successfully.', position: 'toast-bottom');
+    }   
+
     public function headers(): array
     {
         return [
-            ['key' => 'id', 'label' => '#', 'class' => 'w-1'],
             ['key' => 'name', 'label' => 'Name', 'class' => 'w-64'],
-            ['key' => 'age', 'label' => 'Age', 'class' => 'w-20'],
+            ['key' => 'phone', 'label' => 'Phone', 'class' => 'w-64'],
             ['key' => 'email', 'label' => 'E-mail', 'class' => 'w-64', 'sortable' => false],
+            ['key' => 'jobrole', 'label' => 'Job Role', 'class' => 'w-64', 'sortable' => false],
             ['key' => 'status', 'label' => 'Status', 'class' => 'w-32'],
         ];
     }
 
-    /**
-     * For demo purpose, this is a static collection.
-     *
-     * On real projects you do it with Eloquent collections.
-     * Please, refer to maryUI docs to see the eloquent examples.
-     */
     public function users(): Collection
     {
-        return collect([
-            ['id' => 1, 'name' => 'John Doe', 'email' => 'john.doe@example.com', 'age' => 30, 'status' => 'Active'],
-            ['id' => 2, 'name' => 'Jane Smith', 'email' => 'jane.smith@example.com', 'age' => 28, 'status' => 'Inactive'],
-            ['id' => 3, 'name' => 'Michael Johnson', 'email' => 'michael.johnson@example.com', 'age' => 35, 'status' => 'Active'],
-        ])
+        $data = Shortlist::all();
+        return $data
             ->sortBy([[...array_values($this->sortBy)]])
             ->when($this->search, function (Collection $collection) {
-                return $collection->filter(fn(array $item) => str($item['name'])->contains($this->search, true));
+                return $collection->filter(function ($item) {
+                    return str($item->name)->contains($this->search, true);
+                });
             });
     }
 
@@ -69,30 +79,71 @@ new class extends Component {
 
 <div>
     <!-- HEADER -->
-    <x-header title="Shortlisted Candidates" separator progress-indicator>
-        <x-slot:middle class="!justify-end">
-            <x-input placeholder="Search..." wire:model.live.debounce="search" clearable icon="o-magnifying-glass" />
+    <x-header title="Shortlisted Candidates" separator progress-indicator class="mb-4">
+        <x-slot:middle class="flex justify-end items-center">
+            <x-input placeholder="Search..." wire:model.live.debounce="search" clearable icon="o-magnifying-glass" class="w-48" />
         </x-slot:middle>
-        <x-slot:actions>
-            <x-button label="Filters" @click="$wire.drawer = true" responsive icon="o-funnel" />
+        <x-slot:actions class="flex items-center">
+            <x-button label="Filters" @click="$wire.drawer = true" responsive icon="o-funnel" class="mr-2" />
         </x-slot:actions>
     </x-header>
 
+    <div class="mb-3 flex justify-end">
+        <x-button icon="o-plus" label="Add to Shortlist" wire:click="$toggle('showDrawer2')" class="btn-primary" />
+    </div>
+
+    <x-drawer wire:model="showDrawer2" class="w-11/12 lg:w-1/3" right>
+        <x-form wire:submit="saveShortlist" class="p-4">
+            <div class="mt-4">
+                <x-input icon="o-user" class="form-input" label="Name" wire:model="name" placeholder="Enter candidate name" />
+            </div>
+            <div class="mt-4">
+                <x-input icon="o-phone" class="form-input" label="Phone" wire:model="phone" placeholder="Enter phone number" />
+            </div>
+            <div class="mt-4">
+                <x-input icon="o-envelope" class="form-input" label="Email" wire:model="email" placeholder="Enter email address" />
+            </div>
+            <div class="mt-4">
+                <x-input icon="o-briefcase" class="form-input" label="Job Role" wire:model="jobrole" placeholder="Enter job role" />
+            </div>
+            <div class="mt-4">
+                @php
+                    $statusOptions = [
+                        ['id' => "Selected", 'name' => "Selected"],
+                        ['id' => "Not Selected", 'name' => "Not Selected"]
+                    ];
+                @endphp
+                <x-select class="form-select" placeholder="Choose the status" :options="$statusOptions" wire:model="status"></x-select>
+            </div>
+            <x-slot:actions class="mt-4 flex justify-end">
+                <x-button label="Close" @click="$wire.showDrawer2 = false" class="mr-2" />
+                <x-button label="Save" class="btn-primary" type="submit" spinner="save" />
+            </x-slot:actions>
+        </x-form>
+    </x-drawer>
+
     <!-- TABLE  -->
-    <x-card>
+    <x-card class="shadow-lg rounded-lg bg-white p-4">
         <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy">
             @scope('actions', $user)
             <x-button icon="o-trash" wire:click="delete({{ $user['id'] }})" wire:confirm="Are you sure?" spinner class="btn-ghost btn-sm {{ $user['status'] === 'Active' ? 'text-green-500' : 'text-red-500' }}" />
+            @endscope
+            @scope('cell_status', $department)
+                @if($department['status'] == "Selected")
+                    <x-badge value="Selected" class="badge-success" />
+                @else
+                    <x-badge value="Not Selected" class="badge-error" />
+                @endif
             @endscope
         </x-table>
     </x-card>
 
     <!-- FILTER DRAWER -->
     <x-drawer wire:model="drawer" title="Filters" right separator with-close-button class="lg:w-1/3">
-        <x-input placeholder="Search..." wire:model.live.debounce="search" icon="o-magnifying-glass" @keydown.enter="$wire.drawer = false" />
+        <x-input placeholder="Search..." wire:model.live.debounce="search" icon="o-magnifying-glass" @keydown.enter="$wire.drawer = false" class="mt-4 mb-4" />
 
-        <x-slot:actions>
-            <x-button label="Reset" icon="o-x-mark" wire:click="clear" spinner />
+        <x-slot:actions class="mt-4 flex justify-end">
+            <x-button label="Reset" icon="o-x-mark" wire:click="clear" spinner class="mr-2" />
             <x-button label="Done" icon="o-check" class="btn-primary" @click="$wire.drawer = false" />
         </x-slot:actions>
     </x-drawer>

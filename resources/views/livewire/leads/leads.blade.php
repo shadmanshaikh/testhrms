@@ -44,12 +44,12 @@ new class extends Component {
     public function headers(): array
     {
         return [
-            ['key' => 'id', 'label' => '#', 'class' => 'w-1'],
-            ['key' => 'name', 'label' => 'Name', 'class' => 'w-64'],
-            ['key' => 'email', 'label' => 'Email', 'class' => 'w-48'],
-            ['key' => 'phone', 'label' => 'Phone', 'class' => 'w-32'],
-            ['key' => 'source', 'label' => 'Source', 'class' => 'w-32'],
-            ['key' => 'notes', 'label' => 'Notes', 'sortable' => false],
+            ['key' => 'id', 'label' => '#', 'class' => 'w-1', 'sortable' => true],
+            ['key' => 'name', 'label' => 'Name', 'class' => 'w-64', 'sortable' => true],
+            ['key' => 'email', 'label' => 'Email', 'class' => 'w-48', 'sortable' => true],
+            ['key' => 'phone', 'label' => 'Phone', 'class' => 'w-32', 'sortable' => true],
+            ['key' => 'source', 'label' => 'Source', 'class' => 'w-32', 'sortable' => true],
+            ['key' => 'notes', 'label' => 'Notes', 'class' => 'w-full', 'sortable' => false],
         ];
 
     }
@@ -113,38 +113,33 @@ new class extends Component {
             <x-icon name="o-plus" class="lg:w-5 h-5 me-2" /> Add Lead
         </label>
     </div>
-    <x-card>
-        <!-- Add Lead Button -->
-        <x-form wire:submit="saveLead">
-            <x-drawer id="add-lead-drawer" title="Add New Lead" class="lg:w-1/3" seperator right>
-                <div class="space-y-4">
-                    <x-input label="Full Name" wire:model="name" required />
-                    
-                    <x-input label="Email" type="email" wire:model="email" required />
-                    
-                    <x-input label="Phone" type="tel" wire:model="phone" required />
-                    
-                    <x-select 
-                            label="Lead Source"
-                            wire:model="source"
-                            :options="$sources"
-                            required
-                            placeholder="Select Source"
-                        />
-                    
-                    <x-textarea label="Notes" wire:model="notes" />
-                    <x-slot:actions>
-                        <x-button label="Cancel" class="btn-ghost" @click="$dispatch('close-drawer', 'add-lead-drawer')" />
-                        <x-button label="Save Lead" class="btn-primary" type="submit" />
-                    </x-slot:actions>
-                </div>
-            </x-drawer>
-        </x-form>
-
-
-        <x-table :headers="$headers" :rows="$data" >
-      
-        </x-table>
+    <x-form wire:submit="saveLead">
+        <x-drawer id="add-lead-drawer" title="Add New Lead" class="lg:w-1/3" seperator right>
+            <div class="space-y-4">
+                <x-input label="Full Name" wire:model="name" required />
+                
+                <x-input label="Email" type="email" wire:model="email" required />
+                
+                <x-input label="Phone" type="tel" wire:model="phone" required />
+                
+                <x-select 
+                        label="Lead Source"
+                        wire:model="source"
+                        :options="$sources"
+                        required
+                        placeholder="Select Source"
+                    />
+                
+                <x-textarea label="Notes" wire:model="notes" />
+                <x-slot:actions>
+                    <x-button label="Cancel" class="btn-ghost" @click="$dispatch('close-drawer', 'add-lead-drawer')" />
+                    <x-button label="Save Lead" class="btn-primary" type="submit" />
+                </x-slot:actions>
+            </div>
+        </x-drawer>
+    </x-form>
+    <x-card class="shadow-lg rounded-lg bg-white p-4">
+        <x-table :headers="$headers" :rows="$data" class="table-auto w-full"></x-table>
     </x-card>
 
     <x-drawer wire:model="drawer" title="Filters" right separator with-close-button class="lg:w-1/3">

@@ -79,7 +79,7 @@ new class extends Component {
         <x-button icon="o-plus" label="Employee" class="btn-primary btn-sm" link="/add-employee"/>
     </div>
     <!-- TABLE  -->
-    <x-card>
+    <x-card class="shadow-lg rounded-lg bg-white p-4">
         <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy">
     
         </x-table>

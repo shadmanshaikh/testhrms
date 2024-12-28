@@ -30,10 +30,10 @@ new class extends Component {
     public function headers(): array
     {
         return [
-            ['key' => 'emp_id', 'label' => 'EMP ID', 'class' => 'w-1'],
-            ['key' => 'name', 'label' => 'Name', 'class' => 'w-64'],
-            ['key' => 'base', 'label' => 'Base Salary', 'class' => 'w-20'],
-            ['key' => 'joiningdate', 'label' => 'Joining Date', 'class' => 'w-20'],
+            ['key' => 'emp_id', 'label' => 'EMP ID', 'class' => 'w-1', 'sortable' => true, 'bold' => true],
+            ['key' => 'name', 'label' => 'Name', 'class' => 'w-20', 'sortable' => true, 'bold' => true],
+            ['key' => 'base', 'label' => 'Base Salary', 'class' => 'w-20', 'sortable' => true, 'bold' => true],
+            ['key' => 'joiningdate', 'label' => 'Joining Date', 'class' => 'w-20', 'sortable' => true, 'bold' => true],
         ];
     }
 
