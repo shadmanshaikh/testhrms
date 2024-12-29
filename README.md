@@ -1,25 +1,42 @@
-# Rukn - HRMS ( Human Resource Management Software)
+# Rukn HRMS
 
-## Features 
+> A modern Human Resource Management System built for efficiency and scalability
 
-1. Dashboard
-2. Leads
-3. Departments
-4. Employee list
-5. Employee Profile
-6. Attendance System
-7. Recruitment
-    7a. Job Postings
-    7b. Shortlist
-    7c. Interviews
-8. Settings
-9. Dark Mode
+## 🚀 Key Features
 
-## Demo Screenshots
+- **Dashboard** - Comprehensive analytics and KPI tracking
+- **Lead Management** - Track and manage potential candidates
+- **Department Organization** - Structured department hierarchy and management
+- **Employee Management**
+  - Complete employee directory
+  - Detailed employee profiles
+  - Attendance tracking system
+- **Recruitment Pipeline**
+  - Job posting management
+  - Candidate shortlisting
+  - Interview scheduling and tracking
+- **System Settings** - Customizable configurations
+- **Dark/Light Mode** - Enhanced visual accessibility
 
-![dept](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/dept.png)
+## 🎯 Core Benefits
 
-![leads](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/leads.png)
+- Streamlined HR workflows
+- Improved recruitment efficiency  
+- Better employee data organization
+- Enhanced decision making with analytics
+- Modern, responsive interface
 
-![shortlist](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/shortlist.png)
+## 📸 Interface Preview
 
+<div align="center">
+
+### Department Management
+![Department Dashboard](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/dept.png)
+
+### Lead Tracking
+![Lead Management](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/leads.png)
+
+### Candidate Shortlisting
+![Shortlist Interface](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/shortlist.png)
+
+</div>
