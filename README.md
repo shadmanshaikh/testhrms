@@ -1,55 +1,90 @@
 # Rukn HRMS
 
-> A modern Human Resource Management System built for efficiency and scalability
+A comprehensive Human Resource Management System designed for modern enterprises, focusing on efficiency, scalability, and intelligent automation.
 
-## 🚀 Key Features
+## Technology Stack
 
-- **Dashboard** - Comprehensive analytics and KPI tracking
-- **Lead Management** - Track and manage potential candidates
-- **Department Organization** - Structured department hierarchy and management
-- **Employee Management**
-  - Complete employee directory
-  - Detailed employee profiles
-  - Attendance tracking system
-- **Recruitment Pipeline**
-  - Job posting management
-  - Candidate shortlisting
-  - Interview scheduling and tracking
-- **Payroll Management**
-  - Generate employee salaries
-  - Salary reports and history
-  - Payslip generation
-- **AI-Powered Reports**
-  - Automated report generation
-  - Data analytics and insights
-  - Smart recommendations
-- **System Settings** - Customizable configurations
-- **Dark/Light Mode** - Enhanced visual accessibility
+### Backend Architecture
+- **Laravel** - Enterprise-grade PHP framework
+- **MySQL** - Production-ready relational database
+- **Livewire** - Dynamic full-stack framework
+- **Volt** - Performance-optimized Livewire compiler
 
-## 🎯 Core Benefits
+### Frontend Technologies  
+- **Blade Templates** - Powerful templating engine
+- **TailwindCSS** - Modern utility-first CSS framework
+- **Alpine.js** - Lightweight reactive JavaScript
+- **Mary UI** - Enterprise UI component system
+- **Chart.js** - Production-grade data visualization
+- **Flatpickr** - Advanced datetime selection
+- **Cropper.js** - Professional image manipulation
 
-- Streamlined HR workflows
-- Improved recruitment efficiency  
-- Better employee data organization
-- Enhanced decision making with analytics
-- Modern, responsive interface
-- Automated payroll processing
-- AI-driven insights and reporting
+### Enterprise Features
+- **Secure Authentication** - Industry-standard security
+- **Real-time Architecture** - Instant data synchronization
+- **Responsive Design** - Device-agnostic interface
+- **Theme System** - Customizable visual experience
+- **Component Architecture** - Enterprise-grade modularity
 
-## 📸 Interface Preview
+## Core Capabilities
+
+### Operational Excellence
+- **Executive Dashboard** - Real-time KPI monitoring and analytics
+- **Lead Pipeline** - End-to-end prospect management
+- **Department Structure** - Hierarchical organization management
+
+### Workforce Management
+- **Employee Directory** - Centralized personnel management
+  - Comprehensive profiles
+  - Advanced search capabilities
+  - Attendance monitoring
+  
+### Talent Acquisition
+- **Recruitment Suite**
+  - Strategic job posting
+  - Candidate evaluation
+  - Interview coordination
+  
+### Financial Management  
+- **Payroll System**
+  - Automated salary processing
+  - Financial reporting
+  - Digital payslip distribution
+  
+### Business Intelligence
+- **AI Analytics**
+  - Automated reporting
+  - Predictive insights
+  - Strategic recommendations
+  
+### Administration
+- **System Configuration** - Enterprise customization
+- **Visual Accessibility** - Dual theme support
+
+## Business Benefits
+
+- Optimized HR Operations
+- Enhanced Recruitment ROI
+- Centralized Data Management
+- Data-Driven Decision Making
+- Enterprise-Grade Interface
+- Automated Financial Processing
+- AI-Enhanced Analytics
+
+## Interface Showcase
 
 <div align="center">
 
-### Dashboard 
-![Department Dashboard](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/dashboard.png?raw=true)
+### Executive Dashboard
+![Operations Dashboard](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/dashboard.png?raw=true)
 
-### Department Management
-![Department Dashboard](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/dept.png)
+### Department Operations
+![Department Management](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/dept.png)
 
-### Lead Tracking
-![Lead Management](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/leads.png)
+### Lead Management
+![Pipeline Dashboard](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/leads.png)
 
-### Candidate Shortlisting
-![Shortlist Interface](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/shortlist.png)
+### Talent Evaluation
+![Candidate Assessment](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/shortlist.png)
 
 </div>
