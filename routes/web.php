@@ -16,26 +16,26 @@ Route::get('/logout' , function(){
     ]);
 });
 //departments
-Volt::route('/departments' , 'departments.department')->middleware('auth');;
+Volt::route('/departments' , 'departments.department')->middleware('auth');
 
 //employees
-Volt::route('/employee' , 'employees.employee')->middleware('auth');;
-Volt::route('/add-employee' , 'employees.addemployee')->middleware('auth');;
+Volt::route('/employee' , 'employees.employee')->middleware('auth');
+Volt::route('/add-employee' , 'employees.addemployee')->middleware('auth');
 // Volt::route('/dashboard')
 
 //leads
-Volt::route('/leads', 'leads.leads')->middleware('auth');;
+Volt::route('/leads', 'leads.leads')->middleware('auth');
 
 //jobs
 
-Volt::route('/jobs', 'recruitment.jobs')->middleware('auth');;
-Volt::route('/shortlist', 'recruitment.shortlist')->middleware('auth');;
-Volt::route('/interviews', 'recruitment.interview')->middleware('auth');;
+Volt::route('/jobs', 'recruitment.jobs')->middleware('auth');
+Volt::route('/shortlist', 'recruitment.shortlist')->middleware('auth');
+Volt::route('/interviews', 'recruitment.interview')->middleware('auth');
 
 //payroll
 
-Volt::route('/payroll/index' , 'payroll.index')->middleware('auth');;
-Volt::route('/payroll/generate' , 'payroll.generate')->middleware('auth');;
-Volt::route('/payroll/generate/generate-slip' , 'payroll.generate-slip')->middleware('auth');;
+Volt::route('/payroll/index' , 'payroll.index')->middleware('auth');
+Volt::route('/payroll/generate' , 'payroll.generate')->middleware('auth');
+Volt::route('/payroll/generate/generate-slip' , 'payroll.generate-slip')->middleware('auth');
 
 

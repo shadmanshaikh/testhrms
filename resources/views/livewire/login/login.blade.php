@@ -1,7 +1,11 @@
 <div>
     {{-- If your happiness depends on money, you will never be happy with yourself. --}}
-    
-    <div class="flex justify-center items-center h-screen">
+    <div class="flex justify-center">
+        <img src="{{ asset('ruknlogo2.png') }}" alt="Rukn Logo" class="">
+    </div>
+        <div class="flex justify-center items-center">
+            <div>
+            </div>
         <form wire:submit="loginCheck">
             <x-card title="Login" subtitle="add your credentials" class="shadow shadow-lg" >
                 
