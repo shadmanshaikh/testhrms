@@ -39,3 +39,8 @@ Volt::route('/payroll/generate' , 'payroll.generate')->middleware('auth');
 Volt::route('/payroll/generate/generate-slip' , 'payroll.generate-slip')->middleware('auth');
 
 
+//ai
+
+//ai -> reports
+
+Volt::route('/ai/reports', 'ai.reports.reports')->middleware('auth');

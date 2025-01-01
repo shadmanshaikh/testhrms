@@ -15,6 +15,14 @@
   - Job posting management
   - Candidate shortlisting
   - Interview scheduling and tracking
+- **Payroll Management**
+  - Generate employee salaries
+  - Salary reports and history
+  - Payslip generation
+- **AI-Powered Reports**
+  - Automated report generation
+  - Data analytics and insights
+  - Smart recommendations
 - **System Settings** - Customizable configurations
 - **Dark/Light Mode** - Enhanced visual accessibility
 
@@ -25,6 +33,8 @@
 - Better employee data organization
 - Enhanced decision making with analytics
 - Modern, responsive interface
+- Automated payroll processing
+- AI-driven insights and reporting
 
 ## 📸 Interface Preview
 
