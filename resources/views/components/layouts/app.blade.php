@@ -67,8 +67,8 @@
                     <x-menu-item title="Employee Salaries" icon="o-calculator" link="/payroll/index" />
                 </x-menu-sub>
                 <x-menu-sub title="Settings" icon="o-cog-6-tooth">
-                    <x-menu-item title="Wifi" icon="o-wifi" link="####" />
-                    <x-menu-item title="Archives" icon="o-archive-box" link="####" />
+                    <x-menu-item title="My Profile" icon="o-user" link="####" />
+                    <x-menu-item title="Config" icon="o-wrench-screwdriver" link="####" />
                 </x-menu-sub>
             </x-menu>
 

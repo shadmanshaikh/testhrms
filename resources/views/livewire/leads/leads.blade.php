@@ -44,10 +44,9 @@ new class extends Component {
     public function headers(): array
     {
         return [
-            ['key' => 'id', 'label' => '#', 'class' => 'w-1', 'sortable' => true],
-            ['key' => 'name', 'label' => 'Name', 'class' => 'w-64', 'sortable' => true],
+            ['key' => 'name', 'label' => 'Name', 'class' => 'w-96', 'sortable' => true],
             ['key' => 'email', 'label' => 'Email', 'class' => 'w-48', 'sortable' => true],
-            ['key' => 'phone', 'label' => 'Phone', 'class' => 'w-32', 'sortable' => true],
+            ['key' => 'phone', 'label' => 'Phone', 'class' => 'w-64', 'sortable' => true],
             ['key' => 'source', 'label' => 'Source', 'class' => 'w-32', 'sortable' => true],
             ['key' => 'notes', 'label' => 'Notes', 'class' => 'w-full', 'sortable' => false],
         ];
@@ -139,7 +138,25 @@ new class extends Component {
         </x-drawer>
     </x-form>
     <x-card class="shadow-lg rounded-lg bg-white p-4">
-        <x-table :headers="$headers" :rows="$data" class="table-auto w-full"></x-table>
+        <x-table :headers="$headers" :rows="$data" class="table-auto w-full">
+            @scope('cell_name', $lead)
+                <div class="w-28">
+                    <x-icon name="o-user" class=""/>  <x-badge :value="$lead->name"  />
+                </div>
+            @endscope
+            @scope('cell_phone' , $personphone)
+                <div class="w-36">
+                <x-icon name="o-phone" class=""/> 
+                <x-badge :value="$personphone->phone"  class="badge-primary" />
+                </div>
+            @endscope
+            @scope('cell_email' , $inemail)
+                <div class="w-52">
+                    <x-icon name="o-envelope"/>
+                    <x-badge :value="$inemail->email"  class="" />
+                </div>
+            @endscope
+        </x-table>
     </x-card>
 
     <x-drawer wire:model="drawer" title="Filters" right separator with-close-button class="lg:w-1/3">

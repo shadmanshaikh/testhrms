@@ -33,7 +33,6 @@ new class extends Component {
     public function headers(): array
     {
         return [
-            ['key' => 'id', 'label' => '#', 'class' => 'w-1'],
             ['key' => 'employee_id', 'label' => 'EMP ID', 'class' => 'w-1'],
             ['key' => 'name', 'label' => 'Name', 'class' => 'w-64'],
             ['key' => 'email', 'label' => 'E-mail', 'sortable' => false],
@@ -81,7 +80,19 @@ new class extends Component {
     <!-- TABLE  -->
     <x-card class="shadow-lg rounded-lg bg-white p-4">
         <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy">
-    
+            @scope("header_name" ,  $header)
+              <b>{{ $header['label'] }}</b>
+            @endscope
+            @scope('cell_name', $user)
+                <x-icon name="o-user"/>
+                <x-badge :value="$user->name"  />
+            @endscope
+            @scope('cell_email' , $inemail)
+                <div class="w-52">
+                    <x-icon name="o-envelope"/>
+                    <x-badge :value="$inemail->email"  class="" />
+                </div>
+            @endscope
         </x-table>
     </x-card>
 
