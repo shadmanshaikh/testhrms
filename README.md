@@ -2,6 +2,10 @@
 
 A comprehensive Human Resource Management System designed for modern enterprises, focusing on efficiency, scalability, and intelligent automation.
 
+## Connect With Me 🤝
+[![GitHub](https://img.shields.io/badge/GitHub-shadmanshaikh-181717?style=flat&logo=github)](https://github.com/shadmanshaikh)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-shadmanshaikh-0077B5?style=flat&logo=linkedin)](https://www.linkedin.com/in/shadman-shaikh-xan)
+
 ## Technology Stack 🛠️
 
 ### Backend Architecture 🏗️
