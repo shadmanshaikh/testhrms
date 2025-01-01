@@ -30,6 +30,9 @@
 
 <div align="center">
 
+### Dashboard 
+![Department Dashboard](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/dashboard.png?raw=true)
+
 ### Department Management
 ![Department Dashboard](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/dept.png)
 
