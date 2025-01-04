@@ -83,12 +83,11 @@
                     <x-menu-item title="Reports" icon="o-document" link="/ai/reports" />
                 </x-menu-sub>
                 <x-menu-sub title="Settings" icon="o-cog-6-tooth">
-                    <x-menu-item title="My Profile" icon="o-user" link="####" />
-                    <x-menu-item title="Config" icon="o-wrench-screwdriver" link="####" />
+                    <x-menu-item title="My Profile" icon="o-user" link="/myprofile" />
+                    <x-menu-item title="Config" icon="o-wrench-screwdriver" link="/config" />
                 </x-menu-sub>
             </x-menu>
 
-            <x-theme-toggle class="btn btn-circle" />
         </x-slot:sidebar>
 
         {{-- The `$slot` goes here --}}
