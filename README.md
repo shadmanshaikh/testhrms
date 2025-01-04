@@ -93,5 +93,6 @@ A comprehensive Human Resource Management System designed for modern enterprises
 
 ### AI Integration
 ![AI Integration](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/ai.png)
+![AI Integration 2](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/ai2.png)
 
 </div>

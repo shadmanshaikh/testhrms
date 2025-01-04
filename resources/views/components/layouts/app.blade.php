@@ -79,9 +79,7 @@
                     <x-menu-item title="Generate Salary" icon="o-calculator" link="/payroll/generate" />
                     <x-menu-item title="Employee Salaries" icon="o-calculator" link="/payroll/index" />
                 </x-menu-sub>
-                <x-menu-sub title="AI" icon="o-sparkles">
-                    <x-menu-item title="Reports" icon="o-document" link="/ai/reports" />
-                </x-menu-sub>
+                <x-menu-item icon="o-sparkles" title="AI" link="/assistant" />
                 <x-menu-sub title="Settings" icon="o-cog-6-tooth">
                     <x-menu-item title="My Profile" icon="o-user" link="/myprofile" />
                     <x-menu-item title="Config" icon="o-wrench-screwdriver" link="/config" />
