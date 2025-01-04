@@ -123,7 +123,7 @@ new class extends Component {
     </x-drawer>
 
     <!-- TABLE  -->
-    <x-card class="shadow-lg rounded-lg bg-white p-4">
+    <x-card class="shadow-lg rounded-lg  p-4">
         <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy">
             @scope('actions', $user)
             <x-button icon="o-trash" wire:click="delete({{ $user['id'] }})" wire:confirm="Are you sure?" spinner class="btn-ghost btn-sm {{ $user['status'] === 'Active' ? 'text-green-500' : 'text-red-500' }}" />

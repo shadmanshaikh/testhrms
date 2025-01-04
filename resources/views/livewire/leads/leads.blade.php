@@ -137,7 +137,7 @@ new class extends Component {
             </div>
         </x-drawer>
     </x-form>
-    <x-card class="shadow-lg rounded-lg bg-white p-4">
+    <x-card class="shadow-lg rounded-lg  p-4">
         <x-table :headers="$headers" :rows="$data" class="table-auto w-full">
             @scope('cell_name', $lead)
                 <div class="w-28">

@@ -119,7 +119,7 @@ new class extends Component {
             </div>
     </div>
 <div class="col-span-1">
-<x-card class="shadow-lg rounded-lg bg-white p-4 mt-3" title="All Employees">
+<x-card class="shadow-lg rounded-lg  p-4 mt-3" title="All Employees">
     <x-slot:menu>
         <x-button label="All Employees" class="btn-sm" link="/employee" icon="o-arrow-long-right" />
     </x-slot:menu>

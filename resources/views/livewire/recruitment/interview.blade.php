@@ -131,9 +131,9 @@ new class extends Component {
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach($users as $user)
-            <x-card class="shadow-lg rounded-lg bg-white p-4">
+            <x-card class="shadow-lg rounded-lg p-4">
                 <div class="p-4">
-                    <h3 class="text-lg font-semibold text-gray-900">{{ $user['intervieweeName'] }}</h3>
+                    <h3 class="text-lg font-semibold text-gray-500">{{ $user['intervieweeName'] }}</h3>
                     <p class="text-sm text-gray-600">Date: {{ $user['interviewDate'] }}</p>
                     <p class="text-sm text-gray-600">Time: {{ $user['interviewTime'] }}</p>
                     <p class="text-sm text-gray-600">Details: {{ $user['interviewDetails'] }}</p>

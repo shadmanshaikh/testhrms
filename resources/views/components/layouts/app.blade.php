@@ -11,12 +11,25 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ isset($title) ? $title.' - '.config('app.name') : config('app.name') }}</title>
 
+    <style>
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Hide scrollbar for IE, Edge and Firefox */
+        * {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen font-sans antialiased bg-base-200/50 dark:bg-base-200">
+<body class="min-h-screen font-sans antialiased bg-base-200/50 dark:bg-base-200 " x-data>
 
     {{-- NAVBAR mobile only --}}
-    <x-nav sticky class="lg:hidden">
+    <x-nav sticky class="lg:hidden overflow-auto">
         <x-slot:brand>
             <x-app-brand />
         </x-slot:brand>
@@ -30,7 +43,7 @@
     {{-- MAIN --}}
     <x-main full-width>
         {{-- SIDEBAR --}}
-        <x-slot:sidebar drawer="main-drawer" collapsible class="bg-base-100 lg:bg-inherit">
+        <x-slot:sidebar drawer="main-drawer" collapsible class="bg-base-100 lg:bg-inherit ">
 
             {{-- BRAND --}}
             <x-app-brand class="p-5 pt-3" />
@@ -85,6 +98,11 @@
     </x-main>
 
     {{--  TOAST area --}}
+    <x-spotlight
+    shortcut="meta.slash"
+    search-text="Find docs, app actions or users"
+    no-results-text="Ops! Nothing here."
+    />  
     <x-toast />
 </body>
 </html>

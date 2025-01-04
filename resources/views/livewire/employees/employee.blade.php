@@ -78,7 +78,7 @@ new class extends Component {
         <x-button icon="o-plus" label="Employee" class="btn-primary btn-sm" link="/add-employee"/>
     </div>
     <!-- TABLE  -->
-    <x-card class="shadow-lg rounded-lg bg-white p-4">
+    <x-card class="shadow-lg rounded-lg  p-4">
         <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy">
             @scope("header_name" ,  $header)
               <b>{{ $header['label'] }}</b>
