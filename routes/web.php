@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ollamaController;
 use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Auth;
+use PhpParser\Builder\Class_;
 
 Volt::route('/', 'dashboard.dashboard')->name('home')->middleware('auth');
 Volt::route('/login' , 'login.login')->name('login');  
@@ -51,3 +53,5 @@ Volt::route('/ai/reports', 'ai.reports.reports')->middleware('auth');
 //settings
 
 Volt::route('/config', 'settings.appconfigs')->middleware('auth');
+
+Route::get('/ollama' , [ollamaController::class , 'index'])->middleware('auth');

@@ -91,4 +91,7 @@ A comprehensive Human Resource Management System designed for modern enterprises
 ### Talent Evaluation
 ![Candidate Assessment](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/shortlist.png)
 
+### AI Integration
+![AI Integration](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/ai.png)
+
 </div>

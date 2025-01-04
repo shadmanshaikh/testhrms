@@ -121,9 +121,9 @@ new class extends Component {
 <div class="col-span-1">
 <x-card class="shadow-lg rounded-lg  p-4 mt-3" title="All Employees">
     <x-slot:menu>
-        <x-button label="All Employees" class="btn-sm" link="/employee" icon="o-arrow-long-right" />
+        <x-button label="All Employees" class="btn-sm" link="/employee" icon="o-arrow-long-right"  />
     </x-slot:menu>
-        <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy">
+        <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy" link="/employee/{name}">
     
         </x-table>
     </x-card>

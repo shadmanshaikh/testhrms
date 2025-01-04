@@ -88,6 +88,7 @@
                 </x-menu-sub>
             </x-menu>
 
+            <x-theme-toggle class="btn btn-circle" />
         </x-slot:sidebar>
 
         {{-- The `$slot` goes here --}}
