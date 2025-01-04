@@ -19,8 +19,10 @@ Route::get('/logout' , function(){
 Volt::route('/departments' , 'departments.department')->middleware('auth');
 
 //employees
-Volt::route('/employee' , 'employees.employee')->middleware('auth');
-Volt::route('/add-employee' , 'employees.addemployee')->middleware('auth');
+Volt::route('/employee/employee-list' , 'employees.employee')->middleware('auth');
+Volt::route('/employee/add-employee' , 'employees.addemployee')->middleware('auth');
+Volt::route('/employee/{name}', 'employees.indemp')->middleware('auth');
+
 // Volt::route('/dashboard')
 
 //leads

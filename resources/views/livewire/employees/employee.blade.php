@@ -75,11 +75,12 @@ new class extends Component {
         </x-slot:actions>
     </x-header>
     <div class="mt-3 mb-3 flex justify-end">
-        <x-button icon="o-plus" label="Employee" class="btn-primary btn-sm" link="/add-employee"/>
+        <x-button icon="o-plus" label="Employee" class="btn-primary btn-sm" link="/employee/add-employee"/>
     </div>
     <!-- TABLE  -->
     <x-card class="shadow-lg rounded-lg  p-4">
-        <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy">
+        <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy" link="/employee/{name}">
+        
             @scope("header_name" ,  $header)
               <b>{{ $header['label'] }}</b>
             @endscope
