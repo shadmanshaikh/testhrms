@@ -95,4 +95,19 @@ A comprehensive Human Resource Management System designed for modern enterprises
 ![AI Integration](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/ai.png)
 ![AI Integration 2](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/ai2.png)
 
+### PWA Feature
+Our application now supports Progressive Web App (PWA) features, providing an enhanced user experience with the following benefits:
+
+- **Offline Access**: Users can access the application even when they are offline. This is particularly useful for users who have intermittent internet connectivity.
+- **Installable**: The application can be installed on the user's device, providing a native app-like experience. Users can launch the app from their home screen without needing to open a browser.
+- **Faster Load Times**: PWAs leverage caching strategies to load content faster, improving the overall performance and user experience.
+- **Push Notifications**: PWAs can send push notifications to keep users engaged and informed about important updates.
+
+To install the PWA, follow these steps:
+1. Open the application in your browser.
+2. Click on the install prompt (usually found in the address bar or menu).
+3. Follow the instructions to add the app to your home screen.
+
+![PWA Feature](https://github.com/shadmanshaikh/rukn/blob/main/public/photos/pwa.png)
+
 </div>

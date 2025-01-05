@@ -56,3 +56,7 @@ Volt::route('/config', 'settings.appconfigs')->middleware('auth');
 
 Route::get('/ollama' , [ollamaController::class , 'index'])->middleware('auth');
 Volt::route('/assistant' , 'ai.assistant')->middleware('auth');
+
+Route::get('/offline', function () {
+    return view('modules/laravelpwa/offline');
+});
