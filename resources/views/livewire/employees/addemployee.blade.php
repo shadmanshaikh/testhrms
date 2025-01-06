@@ -49,29 +49,30 @@ new class extends Component {
     public function saveEmpInfo()
     {
         $validated = $this->validate([
-            'firstname' => 'required|min:2',
-            'lastname' => 'required|min:2', 
-            'selectGender' => 'required',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required',
-            'dob' => 'required|date',
-            'address' => 'required',
-            'emergency_contact' => 'required',
-            'department' => 'required',
-            'employeeId' => 'required|unique:users',
-            'designation' => 'required',
-            'joiningDate' => 'required|date',
-            'workLocation' => 'required',
-            'employmentType' => 'required',
-            'emiratesId' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            'passport' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            'workPermit' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            'certificates' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            'policeClearance' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
-            'medicalCertificate' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048'
+            // 'firstname' => 'required|min:2',
+            // 'lastname' => 'required|min:2', 
+            // 'selectGender' => 'required',
+            // 'email' => 'required|email|unique:users',
+            // 'phone' => 'required',
+            // 'dob' => 'required|date',
+            // 'address' => 'required',
+            // 'emergency_contact' => 'required',
+            // 'department' => 'required',
+            // 'employeeId' => 'required|unique:users',
+            // 'designation' => 'required',
+            // 'joiningDate' => 'required|date',
+            // 'workLocation' => 'required',
+            // 'employmentType' => 'required',
+            // 'emiratesId' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            // 'passport' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            // 'workPermit' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            // 'certificates' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            // 'policeClearance' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048',
+            // 'medicalCertificate' => 'required|file|mimes:pdf,jpg,jpeg,png|max:2048'
         ]);
 
         try {
+
             $user = new Employeeinfo();
             $user->name = $validated['firstname'];
             $user->lastname = $validated['lastname'];
@@ -464,6 +465,6 @@ new class extends Component {
             <x-button label="Cancel" />
             <x-button label="Save" class="btn-primary" type="submit" spinner="save" />
         </x-slot:actions>
-    </x-form>
     </x-card>
+</x-form>
 </div>

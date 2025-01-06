@@ -53,6 +53,8 @@ Volt::route('/ai/reports', 'ai.reports.reports')->middleware('auth');
 //settings
 
 Volt::route('/config', 'settings.appconfigs')->middleware('auth');
+Volt::route('/create-user' , 'createuser.create')->middleware('auth');
+
 
 Route::get('/ollama' , [ollamaController::class , 'index'])->middleware('auth');
 Volt::route('/assistant' , 'ai.assistant')->middleware('auth');

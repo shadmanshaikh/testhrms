@@ -82,6 +82,7 @@
                 </x-menu-sub>
                 <x-menu-item icon="o-sparkles" title="AI" link="/assistant" />
                 <x-menu-sub title="Settings" icon="o-cog-6-tooth">
+                    <x-menu-item title="Create User" icon="o-user-group" link="/create-user" />
                     <x-menu-item title="My Profile" icon="o-user" link="/myprofile" />
                     <x-menu-item title="Config" icon="o-wrench-screwdriver" link="/config" />
                 </x-menu-sub>
