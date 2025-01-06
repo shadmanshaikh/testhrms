@@ -11,7 +11,7 @@ new class extends Component {
     public string $search = '';
 
     public bool $drawer = false;
-
+    public bool $createUserDrawer = false;
     public array $sortBy = ['column' => 'name', 'direction' => 'asc'];
 
     // Clear filters
@@ -36,21 +36,18 @@ new class extends Component {
             ['key' => 'email', 'label' => 'E-mail', 'sortable' => false],
         ];
     }
-
-    /**
-     * For demo purpose, this is a static collection.
-     *
-     * On real projects you do it with Eloquent collections.
-     * Please, refer to maryUI docs to see the eloquent examples.
-     */
     public function users(): Collection
     {
         $user = User::all();
-        return $user
-            ->sortBy([[...array_values($this->sortBy)]])
-            ->when($this->search, function (Collection $collection) {
-                return $collection->filter(fn(array $item) => str($item['name'])->contains($this->search, true));
+        $sortedAndFilteredUsers = $user
+        ->sortBy(array_values($this->sortBy))
+        ->when($this->search, function (Collection $collection) {
+            return $collection->filter(function ($item) {
+                return str_contains(strtolower($item['name']), strtolower($this->search));
             });
+        });
+    
+        return $sortedAndFilteredUsers;
     }
 
     public function with(): array
@@ -73,6 +70,19 @@ new class extends Component {
         </x-slot:actions>
     </x-header>
 
+    <div class="flex justify-end">
+        <x-button label="Create User" wire:click="$toggle('createUserDrawer')" icon="o-user-plus" class="btn-primary btn-sm mb-3" />
+    </div>
+
+    <x-drawer wire:model="createUserDrawer" class="w-11/12 lg:w-1/3" right>
+        <div>
+            <x-input label="Name" wire:model="name" />
+            <x-input label="Email" wire:model="email" />
+            <x-input label="Password" wire:model="password" type="password" />
+            <x-input label="Confirm Password" wire:model="password_confirmation" type="password" />
+        </div>
+    <x-button label="Close" @click="$wire.createUserDrawer = false" />
+</x-drawer>
     <!-- TABLE  -->
     <x-card>
         <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy">
