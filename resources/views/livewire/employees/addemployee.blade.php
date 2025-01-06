@@ -89,7 +89,7 @@ new class extends Component {
             $user->employment_type = $validated['employmentType'];
             
             // Handle file uploads
-            $user->emirates_id = $this->emiratesId->store('documents');
+            $user->emirates_id = $this->emiratesId->store('emirates_id' , 'public/documents');
             $user->passport = $this->passport->store('documents');
             $user->work_permit = $this->workPermit->store('documents');
             $user->certificates = $this->certificates->store('documents');
@@ -335,11 +335,17 @@ new class extends Component {
             <!-- Emirates ID -->
             <div class="bg-gray-50 p-4 rounded-lg hover:bg-gray-100 transition-colors duration-200">
                 <div class="font-medium text-gray-900 mb-2">Emirates ID</div>
-                <x-file wire:model="emiratesId" accept=".pdf,.jpg,.jpeg,.png" crop-after-change>
+                <x-file wire:model="emiratesId" accept="image/jpeg,image/png" crop-after-change>
                     <div class="aspect-video flex items-center justify-center bg-white border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors duration-200">
-                        <img src="{{ $emiratesId ?? '/images/placeholders/empty-doc.png' }}" 
-                             class="max-h-40 rounded-lg object-contain" 
-                             alt="Emirates ID Preview" />
+                        @if ($emiratesId)
+                            <img src="{{ $emiratesId->temporaryUrl() }}" 
+                                 class="max-h-40 rounded-lg object-contain" 
+                                 alt="Emirates ID Preview" />
+                        @else
+                            <img src="/images/placeholders/empty-doc.png" 
+                                 class="max-h-40 rounded-lg object-contain" 
+                                 alt="Emirates ID Preview" />
+                        @endif
                     </div>
                 </x-file>
                 <div class="mt-2 text-sm text-gray-600">Front & back copy required</div>
@@ -351,9 +357,15 @@ new class extends Component {
                 <div class="font-medium text-gray-900 mb-2">Passport with Visa</div>
                 <x-file wire:model="passport" accept=".pdf,.jpg,.jpeg,.png" crop-after-change>
                     <div class="aspect-video flex items-center justify-center bg-white border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors duration-200">
-                        <img src="{{ $passport ?? '/images/placeholders/empty-doc.png' }}" 
-                             class="max-h-40 rounded-lg object-contain" 
-                             alt="Passport Preview" />
+                        @if ($passport)
+                                <img src="{{ $passport->temporaryUrl() }}" 
+                                    class="max-h-40 rounded-lg object-contain" 
+                                    alt="Emirates ID Preview" />
+                        @else
+                            <img src="/images/placeholders/empty-doc.png" 
+                                    class="max-h-40 rounded-lg object-contain" 
+                                    alt="Passport Preview" />
+                        @endif
                     </div>
                 </x-file>
                 <div class="mt-2 text-sm text-gray-600">Include visa page</div>
@@ -365,9 +377,15 @@ new class extends Component {
                 <div class="font-medium text-gray-900 mb-2">UAE Work Permit</div>
                 <x-file wire:model="workPermit" accept=".pdf,.jpg,.jpeg,.png" crop-after-change>
                     <div class="aspect-video flex items-center justify-center bg-white border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors duration-200">
-                        <img src="{{ $workPermit ?? '/images/placeholders/empty-doc.png' }}" 
-                             class="max-h-40 rounded-lg object-contain" 
-                             alt="Work Permit Preview" />
+                        @if ($workPermit)
+                            <img src="{{ $workPermit->temporaryUrl() }}" 
+                                 class="max-h-40 rounded-lg object-contain" 
+                                 alt="Emirates ID Preview" />
+                        @else
+                            <img src="/images/placeholders/empty-doc.png" 
+                                 class="max-h-40 rounded-lg object-contain" 
+                                 alt="Work Permit Preview" />
+                        @endif
                     </div>
                 </x-file>
                 <div class="mt-2 text-sm text-gray-600">Valid UAE work permit/visa</div>
@@ -379,9 +397,15 @@ new class extends Component {
                 <div class="font-medium text-gray-900 mb-2">Educational Certificates</div>
                 <x-file wire:model="certificates" accept=".pdf,.jpg,.jpeg,.png" crop-after-change>
                     <div class="aspect-video flex items-center justify-center bg-white border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors duration-200">
-                        <img src="{{ $certificates ?? '/images/placeholders/empty-doc.png' }}" 
-                             class="max-h-40 rounded-lg object-contain" 
-                             alt="Certificates Preview" />
+                         @if ($certificates)
+                            <img src="{{ $certificates->temporaryUrl() }}" 
+                                 class="max-h-40 rounded-lg object-contain" 
+                                 alt="Emirates ID Preview" />
+                        @else
+                            <img src="/images/placeholders/empty-doc.png" 
+                                 class="max-h-40 rounded-lg object-contain" 
+                                 alt="Certificates Preview" />
+                        @endif
                     </div>
                 </x-file>
                 <div class="mt-2 text-sm text-gray-600">Attested certificates required</div>
@@ -393,9 +417,15 @@ new class extends Component {
                 <div class="font-medium text-gray-900 mb-2">Police Clearance</div>
                 <x-file wire:model="policeClearance" accept=".pdf,.jpg,.jpeg,.png" crop-after-change>
                     <div class="aspect-video flex items-center justify-center bg-white border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors duration-200">
-                        <img src="{{ $policeClearance ?? '/images/placeholders/empty-doc.png' }}" 
-                             class="max-h-40 rounded-lg object-contain" 
-                             alt="Police Clearance Preview" />
+                    @if ($policeClearance)
+                            <img src="{{ $policeClearance->temporaryUrl() }}" 
+                                 class="max-h-40 rounded-lg object-contain" 
+                                 alt="Police Clearance Preview" />
+                        @else
+                            <img src="/images/placeholders/empty-doc.png" 
+                                 class="max-h-40 rounded-lg object-contain" 
+                                 alt="Police Clearance Preview" />
+                        @endif
                     </div>
                 </x-file>
                 <div class="mt-2 text-sm text-gray-600">Recent clearance certificate</div>
@@ -407,9 +437,15 @@ new class extends Component {
                 <div class="font-medium text-gray-900 mb-2">Medical Certificate</div>
                 <x-file wire:model="medicalCertificate" accept=".pdf,.jpg,.jpeg,.png" crop-after-change>
                     <div class="aspect-video flex items-center justify-center bg-white border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors duration-200">
-                        <img src="{{ $medicalCertificate ?? '/images/placeholders/empty-doc.png' }}" 
-                             class="max-h-40 rounded-lg object-contain" 
-                             alt="Medical Certificate Preview" />
+                    @if ($medicalCertificate)
+                            <img src="{{ $medicalCertificate->temporaryUrl() }}" 
+                                 class="max-h-40 rounded-lg object-contain" 
+                                 alt="Medical Certificate Preview" />
+                        @else
+                            <img src="/images/placeholders/empty-doc.png" 
+                                 class="max-h-40 rounded-lg object-contain" 
+                                 alt="Medical Certificate Preview" />
+                        @endif
                     </div>
                 </x-file>
                 <div class="mt-2 text-sm text-gray-600">Fitness certificate required</div>
