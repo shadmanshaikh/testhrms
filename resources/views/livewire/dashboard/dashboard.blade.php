@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Employeeinfo;
 use Livewire\Volt\Component;
 use Illuminate\Support\Arr; 
 use Illuminate\Support\Collection;
@@ -56,7 +57,7 @@ new class extends Component {
     public array $myChart = [
         'type' => 'pie',
         'data' => [
-            'labels' => ['Mary', 'Joe', 'Ana'],
+            'labels' => ['Male', 'Female'],
             'datasets' => [
                 [
                     'label' => '# of Votes',
@@ -65,6 +66,12 @@ new class extends Component {
             ]
         ]
     ];
+
+    public function mount(){
+        $male = Employeeinfo::where('gender', 1)->count();
+        $female = Employeeinfo::where('gender', 2)->count();
+        Arr::set($this->myChart, 'data.datasets.0.data', [$male, $female]);
+    }
     public function users(): Collection
     {
         $emp = \App\Models\Employeeinfo::all();
@@ -76,7 +83,6 @@ new class extends Component {
     }
     public function randomize()
     {
-        Arr::set($this->myChart, 'data.datasets.0.data', [fake()->randomNumber(2), fake()->randomNumber(2), fake()->randomNumber(2)]);
     }
     public function with(): array
     {
