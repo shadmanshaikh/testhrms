@@ -97,7 +97,10 @@ new class extends Component {
                         <x-icon name="o-building-office" class="w-5 h-5 text-gray-500" />
                         <div>
                             <p class="text-sm text-gray-500">Department</p>
-                            <p class="font-medium">{{$employee->department_id}}</p>
+                            @php
+                                $department = App\Models\Department::find($employee->department_id);
+                            @endphp
+                            <p class="font-medium">{{$department->name}}</p>
                         </div>
                     </div>
                     <div class="flex items-center space-x-2">
@@ -111,6 +114,7 @@ new class extends Component {
                         <x-icon name="o-briefcase" class="w-5 h-5 text-gray-500" />
                         <div>
                             <p class="text-sm text-gray-500">Employment Type</p>
+                            
                             <p class="font-medium">{{$employee->employment_type}}</p>
                         </div>
                     </div>
@@ -118,6 +122,38 @@ new class extends Component {
             </div>
         </div>
     </x-card>
+    <x-card class="mb-6 hover:shadow-xl transition-shadow duration-300">
+        <div class="p-6">
+            <h3 class="text-xl font-semibold mb-4">Employee Documents</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                @if ($employee->emirates_id)
+                    <div>
+                        <h4 class="font-medium">Emirates ID</h4>
+                        <img src="{{ asset('storage/' . $employee->emirates_id) }}" alt="Emirates ID" class="rounded-lg shadow-md">
+                    </div>
+                @endif
+                @if ($employee->work_permit)
+                    <div>
+                        <h4 class="font-medium">Work Permit</h4>
+                        <img src="{{ asset('storage/' . $employee->work_permit) }}" alt="Work Permit" class="rounded-lg shadow-md">
+                    </div>
+                @endif
+                @if ($employee->certificates)
+                    <div>
+                        <h4 class="font-medium">Certificates</h4>
+                        <img src="{{ asset('storage/' . $employee->certificates) }}" alt="Certificates" class="rounded-lg shadow-md">
+                    </div>
+                @endif
+                @if ($employee->police_clearance)
+                    <div>
+                        <h4 class="font-medium">Police Clearance</h4>
+                        <img src="{{ asset('storage/' . $employee->police_clearance) }}" alt="Police Clearance" class="rounded-lg shadow-md">
+                    </div>
+                @endif
+            </div>
+        </div>
+    </x-card>
+
     @endforeach
 
     <!-- FILTER DRAWER -->

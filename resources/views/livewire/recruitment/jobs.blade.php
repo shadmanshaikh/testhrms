@@ -74,6 +74,8 @@ new class extends Component {
         $jobpost->date_posted = now();
         $jobpost->save();
         $this->success('Job post saved successfully.', position: 'toast-bottom');
+        $this->showDrawer2 = false;
+        $this->redirect('/jobs');
     }
 
     public function with(): array
