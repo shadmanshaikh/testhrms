@@ -36,6 +36,25 @@ new class extends Component {
             ['key' => 'email', 'label' => 'E-mail', 'sortable' => false],
         ];
     }
+    public $name, $email, $password, $password_confirmation;
+    public function saveUser()
+    {
+        $this->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|confirmed',
+        ]);
+
+        User::create([
+            'name' => $this->name,
+            'email' => $this->email,
+            'password' => bcrypt($this->password),
+        ]);
+
+        $this->success('User created successfully.', position: 'toast-bottom');
+        $this->createUserDrawer = false;
+        $this->redirect('/create-user');
+    }
     public function users(): Collection
     {
         $user = User::all();
@@ -61,7 +80,7 @@ new class extends Component {
 
 <div>
     <!-- HEADER -->
-    <x-header title="Hello" separator progress-indicator>
+    <x-header title="Create User" separator progress-indicator>
         <x-slot:middle class="!justify-end">
             <x-input placeholder="Search..." wire:model.live.debounce="search" clearable icon="o-magnifying-glass" />
         </x-slot:middle>
@@ -75,13 +94,16 @@ new class extends Component {
     </div>
 
     <x-drawer wire:model="createUserDrawer" class="w-11/12 lg:w-1/3" right>
-        <div>
-            <x-input label="Name" wire:model="name" />
-            <x-input label="Email" wire:model="email" />
-            <x-input label="Password" wire:model="password" type="password" />
-            <x-input label="Confirm Password" wire:model="password_confirmation" type="password" />
-        </div>
-    <x-button label="Close" @click="$wire.createUserDrawer = false" />
+        <x-form wire:submit="saveUser">
+                <x-input label="Name" wire:model="name" />
+                <x-input label="Email" wire:model="email" />
+                <x-input label="Password" wire:model="password" type="password" />
+                <x-input label="Confirm Password" wire:model="password_confirmation" type="password" />
+            <x-slot:actions>
+                <x-button label="Cancel" />
+                <x-button label="Save" class="btn-primary" type="submit" spinner="save" />
+            </x-slot:actions>
+        </x-form>
 </x-drawer>
     <!-- TABLE  -->
     <x-card>
