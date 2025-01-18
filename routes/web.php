@@ -42,6 +42,12 @@ Volt::route('/payroll/index' , 'payroll.index')->middleware('auth');
 Volt::route('/payroll/generate' , 'payroll.generate')->middleware('auth');
 Volt::route('/payroll/generate/generate-slip' , 'payroll.generate-slip')->middleware('auth');
 
+// policy documents 
+Volt::route('/policy-documents' , 'policydocuments.policydocs')->middleware('auth');
+
+// create policy document
+Volt::route('/policy-documents/create' , 'policydocuments.createpolicy')->middleware('auth');
+
 
 //ai
 

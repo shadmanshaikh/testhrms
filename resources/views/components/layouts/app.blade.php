@@ -80,6 +80,7 @@
                     <x-menu-item title="Generate Salary" icon="o-calculator" link="/payroll/generate" />
                     <x-menu-item title="Employee Salaries" icon="o-calculator" link="/payroll/index" />
                 </x-menu-sub>
+                <x-menu-item title="Policy Documents" icon="o-document-text" link="/policy-documents" />
                 <x-menu-item icon="o-sparkles" title="AI" link="/assistant" />
                 <x-menu-sub title="Settings" icon="o-cog-6-tooth">
                     <x-menu-item title="Create User" icon="o-user-group" link="/create-user" />
