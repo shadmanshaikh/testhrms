@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Lead;
+use App\Models\PolicyDocument;
 use Livewire\Volt\Component;
 use Mary\Traits\Toast;
 use Livewire\WithPagination;
@@ -18,7 +19,7 @@ new class extends Component {
     public $sources;
     public bool $drawer = false;
 
-    public array $sortBy = ['column' => 'name', 'direction' => 'asc'];
+    public array $sortBy = ['column' => 'title', 'direction' => 'asc'];
     public string $search = '';
     public function clear(): void
     {
@@ -44,22 +45,19 @@ new class extends Component {
     public function headers(): array
     {
         return [
-            ['key' => 'name', 'label' => 'Name', 'class' => 'w-96', 'sortable' => true],
-            ['key' => 'email', 'label' => 'Email', 'class' => 'w-48', 'sortable' => true],
-            ['key' => 'phone', 'label' => 'Phone', 'class' => 'w-64', 'sortable' => true],
-            ['key' => 'source', 'label' => 'Source', 'class' => 'w-32', 'sortable' => true],
-            ['key' => 'notes', 'label' => 'Notes', 'class' => 'w-full', 'sortable' => false],
+            ['key' => 'title', 'label' => 'Title', 'class' => 'w-96', 'sortable' => true],
+            ['key' => 'category', 'label' => 'Category', 'class' => 'w-64', 'sortable' => true],
         ];
 
     }
 
     public function data(): LengthAwarePaginator {
-        return Lead::query()
+        return PolicyDocument::query()
         ->when($this->sortBy['column'], function ($query) {
             $query->orderBy($this->sortBy['column'], $this->sortBy['direction']);
         })
         ->when($this->search, function ($query) {
-            $query->where('name', 'like', '%' . $this->search . '%');
+            $query->where('title', 'like', '%' . $this->search . '%');
         })
         ->paginate(5);
     }
@@ -113,23 +111,14 @@ new class extends Component {
  
     <x-card class="shadow-lg rounded-lg  p-4">
         <x-table :headers="$headers" :rows="$data" class="table-auto w-full">
-            @scope('cell_name', $lead)
-                <div class="w-28">
-                    <x-icon name="o-user" class=""/>  <x-badge :value="$lead->name"  />
-                </div>
-            @endscope
-            @scope('cell_phone' , $personphone)
-                <div class="w-36">
-                <x-icon name="o-phone" class=""/> 
-                <x-badge :value="$personphone->phone"  class="badge-primary" />
-                </div>
-            @endscope
-            @scope('cell_email' , $inemail)
-                <div class="w-52">
-                    <x-icon name="o-envelope"/>
-                    <x-badge :value="$inemail->email"  class="" />
-                </div>
-            @endscope
+        @scope('actions', $user)
+            <div class="flex justify-end space-x-2">
+                <x-button icon="o-eye" link="{{$user->document}}" spinner class="btn-sm" />
+                <x-button icon="o-globe-alt" link="/policy/{{$user->title}}" spinner class="btn-sm btn-primary" />
+            </div>
+        @endscope
+       
+        
         </x-table>
     </x-card>
 

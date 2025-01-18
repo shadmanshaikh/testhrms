@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\Department;
 use App\Models\Employeeinfo;
+use App\Models\Lead;
 use Livewire\Volt\Component;
 use Illuminate\Support\Arr; 
 use Illuminate\Support\Collection;
@@ -87,6 +89,9 @@ new class extends Component {
     public function with(): array
     {
         return [
+            'noEmployees' => Employeeinfo::count(),
+            'departments'=>Department::count(),
+            'leads' => Lead::count(),
             'title' => 'Dashboard',
             'icon' => 'o-chart-pie',
             'link' => '/',
@@ -104,15 +109,15 @@ new class extends Component {
         </x-slot:middle>
     </x-header>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 overflow-hidden">
-        <x-stat title="New Hires" value="44" icon="o-user" tooltip="Welcome!" class="text-blue-500" />
-        <x-stat title="Employee Engagement" description="This quarter" value="85%" icon="o-face-smile" tooltip-bottom="Great job!" class="text-green-500" />
-        <x-stat title="Turnover Rate" description="This quarter" value="12%" icon="o-archive-box" tooltip-left="Room for improvement" class="text-red-500" />
+        <x-stat title="Employees" :value="$noEmployees" icon="o-user" tooltip="Welcome!" class="text-blue-500" />
+        <x-stat title="Departments" :value="$departments" icon="o-building-office-2" tooltip-bottom="Great job!" class="text-green-500" />
+        <x-stat title="Leads" :value="$leads" icon="o-archive-box" tooltip-left="Room for improvement" class="text-red-500" />
         <x-stat title="Training Sessions" description="This quarter" value="20" icon="o-book-open" tooltip-right="Knowledge is power!" class="text-purple-500" />
     </div>
     
     <div class="lg:grid grid-cols-2 mt-3 gap-3 md:grid grid-cols-1 mt-3 gap-3">
             <div class="col-span-1">
-                <x-card class="w-full" title="Gender Diff.">
+                <x-card class="w-full" title="Gender Difference">
                     <div class="flex justify-center">
                         <x-chart wire:model="myChart" style="width: 50%; height: auto;" />
                     </div>

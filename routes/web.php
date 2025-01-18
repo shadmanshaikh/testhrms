@@ -48,6 +48,9 @@ Volt::route('/policy-documents' , 'policydocuments.policydocs')->middleware('aut
 // create policy document
 Volt::route('/policy-documents/create' , 'policydocuments.createpolicy')->middleware('auth');
 
+// page to show policies 
+Volt::route('/policy/{name}' , 'policydocuments.showpolicy');
+
 
 //ai
 
