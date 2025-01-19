@@ -51,6 +51,8 @@ Volt::route('/policy-documents/create' , 'policydocuments.createpolicy')->middle
 // page to show policies 
 Volt::route('/policy/{name}' , 'policydocuments.showpolicy');
 
+// leave requests
+Volt::route('/leave-requests' , 'employees.leaverequest')->middleware('auth');
 
 //ai
 

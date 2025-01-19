@@ -70,6 +70,7 @@
                 <x-menu-item title="Departments" icon="o-building-office" link="/departments" />
                 <x-menu-sub title="Employee" icon="o-user-group">
                     <x-menu-item title="Employee List" icon="o-user-group" link="/employee/employee-list" />
+                    <x-menu-item title="Leave Requests" icon="o-calendar" link="/leave-requests" />
                 </x-menu-sub>
                 <x-menu-sub title="Recruitment" icon="o-user-plus">
                     <x-menu-item title="Job Postings" icon="o-briefcase" link="/jobs" />

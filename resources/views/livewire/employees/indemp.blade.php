@@ -56,7 +56,8 @@ new class extends Component {
     <!-- Employee Details -->
     @foreach($empD as $employee)
     <x-card class="mb-6 hover:shadow-xl transition-shadow duration-300">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
+         <x-button icon="o-pencil" class="btn-primary btn-circle btn-sm absolute -right-2 -top-2" link="/edit-employee/{{$employee->name}}" />
+         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
             <!-- Profile Section -->
             <div class="md:col-span-1 flex flex-col items-center justify-center p-4 border-r border-gray-200">
                 <div class="w-24 h-24 bg-primary/10 rounded-full flex items-center justify-center mb-4">

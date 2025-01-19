@@ -112,7 +112,8 @@ new class extends Component {
         <x-stat title="Employees" :value="$noEmployees" icon="o-user" tooltip="Welcome!" class="text-blue-500" />
         <x-stat title="Departments" :value="$departments" icon="o-building-office-2" tooltip-bottom="Great job!" class="text-green-500" />
         <x-stat title="Leads" :value="$leads" icon="o-archive-box" tooltip-left="Room for improvement" class="text-red-500" />
-        <x-stat title="Training Sessions" description="This quarter" value="20" icon="o-book-open" tooltip-right="Knowledge is power!" class="text-purple-500" />
+        @php $date = now()->format('d-m-Y'); @endphp
+        <x-stat title="Date" :value="$date" icon="o-clock" tooltip-right="Knowledge is power!" class="text-purple-500" />
     </div>
     
     <div class="lg:grid grid-cols-2 mt-3 gap-3 md:grid grid-cols-1 mt-3 gap-3">
