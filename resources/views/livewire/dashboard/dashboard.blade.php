@@ -105,7 +105,7 @@ new class extends Component {
     
     <x-header :title="$title" separator progress-indicator>
         <x-slot:middle class="!justify-end">
-            <x-input placeholder="Search..." wire:model.live.debounce="search" clearable icon="o-magnifying-glass" class="lg:w-auto w-full" />
+            <x-button icon="o-magnifying-glass" label="Search" class="btn-primary btn-sm" @click.stop="$dispatch('mary-search-open')" />
         </x-slot:middle>
     </x-header>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 overflow-hidden">

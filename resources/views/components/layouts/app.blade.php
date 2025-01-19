@@ -81,15 +81,18 @@
                     <x-menu-item title="Employee Salaries" icon="o-calculator" link="/payroll/index" />
                 </x-menu-sub>
                 <x-menu-item title="Policy Documents" icon="o-document-text" link="/policy-documents" />
-                <x-menu-item icon="o-sparkles" title="AI" link="/assistant" />
                 <x-menu-sub title="Settings" icon="o-cog-6-tooth">
                     <x-menu-item title="Create User" icon="o-user-group" link="/create-user" />
                     <x-menu-item title="My Profile" icon="o-user" link="/myprofile" />
                     <x-menu-item title="Config" icon="o-wrench-screwdriver" link="/config" />
                 </x-menu-sub>
             </x-menu>
+            <div class="flex ml-5">
+                <x-button icon="o-sparkles" class="btn-primary btn-circle btn-sm" link="/assistant" />
+                <x-theme-toggle class="btn btn-circle btn-sm ml-3" />
+            </div>
 
-            <x-theme-toggle class="btn btn-circle" />
+        
         </x-slot:sidebar>
 
         {{-- The `$slot` goes here --}}
