@@ -2,6 +2,7 @@
 
 use App\Models\Department;
 use App\Models\Employeeinfo;
+use App\Models\Interview;
 use App\Models\Lead;
 use Livewire\Volt\Component;
 use Illuminate\Support\Arr; 
@@ -9,8 +10,8 @@ use Illuminate\Support\Collection;
 
 
 new class extends Component {
-
-
+    
+    
     public array $sortBy = ['column' => 'name', 'direction' => 'asc'];
     public string $search = '';
     public function headers(): array
@@ -22,22 +23,17 @@ new class extends Component {
             ['key' => 'email', 'label' => 'E-mail', 'sortable' => false],
         ];
     }
-    public array $lineChart = [
-        'type' => 'line',
+    public array $nationalityChart = [
+        'type' => 'bar',
         'data' => [
-            'labels' => ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            'labels' => ['Indian' , 'British'],
             'datasets' => [
                 [
-                    'label' => 'Sales',
-                    'data' => [65, 59, 80, 81, 56, 55, 40],
-                    'borderColor' => 'rgba(255, 99, 132, 1)',
-                    'backgroundColor' => 'rgba(255, 99, 132, 0.2)',
-                ],
-                [
-                    'label' => 'Expenses',
-                    'data' => [28, 48, 40, 19, 86, 27, 90],
-                    'borderColor' => 'rgba(54, 162, 235, 1)',
-                    'backgroundColor' => 'rgba(54, 162, 235, 0.2)',
+                    'label' => 'Nationality',
+                    'data' => [],
+                    'borderColor' => 'rgb(232, 0, 50)',
+                    'backgroundColor' => 'rgba(139, 1, 252, 0.5)',
+                    'borderRadius' => 10,
                 ]
             ]
         ],
@@ -68,27 +64,37 @@ new class extends Component {
             ]
         ]
     ];
-
     public function mount(){
         $male = Employeeinfo::where('gender', 1)->count();
         $female = Employeeinfo::where('gender', 2)->count();
         Arr::set($this->myChart, 'data.datasets.0.data', [$male, $female]);
+
+        $employees = Employeeinfo::all();
+        $groupedByNationality = $employees->groupBy('nationality');
+
+        $labels = $groupedByNationality->keys()->toArray();
+        $data = $groupedByNationality->map(function ($group) {
+            return $group->count();
+        })->toArray();
+
+        Arr::set($this->nationalityChart, 'data.labels', $labels);
+        Arr::set($this->nationalityChart, 'data.datasets.0.data', $data);
+
+        // dd($this->upcomingInterviews);
     }
     public function users(): Collection
     {
         $emp = \App\Models\Employeeinfo::all();
         return $emp
-            ->sortBy([[...array_values($this->sortBy)]])
-            ->when($this->search, function (Collection $collection) {
-                return $collection->filter(fn(array $item) => str($item['name'])->contains($this->search, true));
-            });
-    }
-    public function randomize()
-    {
+        ->sortBy([[...array_values($this->sortBy)]])
+        ->when($this->search, function (Collection $collection) {
+            return $collection->filter(fn(array $item) => str($item['name'])->contains($this->search, true));
+        });
     }
     public function with(): array
     {
         return [
+            'upcomingInterviews' => Interview::where('interviewDate', '>', now())->get(),
             'noEmployees' => Employeeinfo::count(),
             'departments'=>Department::count(),
             'leads' => Lead::count(),
@@ -125,8 +131,8 @@ new class extends Component {
                 </x-card>
             </div>
             <div class="col-span-1">
-                <x-card class="lg:w-full" title="Sales Vs Expense">
-                    <x-chart wire:model="lineChart" style="width: 100%; height: auto;" />
+                <x-card class="lg:w-full" title="Nationality Distribution">
+                    <x-chart wire:model="nationalityChart" style="width: 100%; height: auto;" />
                 </x-card>
             </div>
     </div>
@@ -135,11 +141,38 @@ new class extends Component {
     <x-slot:menu>
         <x-button label="All Employees" class="btn-sm" link="/employee" icon="o-arrow-long-right"  />
     </x-slot:menu>
-        <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy" link="/employee/{name}">
-    
+        <x-table :headers="$headers" :rows="$users" :sort-by="$sortBy" link="/employee/{name}">    
         </x-table>
     </x-card>
 </div>
-    
+   <div class="lg:grid grid-cols-2 gap-3 mt-3">
+        <div class="col-span-1">
+            <x-card class="w-full" title="Upcoming Interviews">
+                    @if($upcomingInterviews->isEmpty())
+                        <div class="text-center text-gray-500">No upcoming interviews</div>
+                    @else
+                        <ul class="divide-y divide-gray-200">
+                            @foreach($upcomingInterviews as $interview)
+                                <li class="py-4 flex justify-between items-center">
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-medium">{{$interview->interviewDate->format('d M Y')}}</span>
+                                        <span class="text-sm text-gray-500">{{$interview->interviewTime}}</span>
+                                    </div>
+                                    <div class="flex flex-col">
+                                        <span class="text-sm font-medium">{{$interview->intervieweeName}}</span>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
+
+            </x-card>
+        </div>
+        <div class="col-span-1">
+            <x-card class="w-full" title="">
+
+            </x-card>
+        </div>
+   </div> 
 
 </div>

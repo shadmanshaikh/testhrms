@@ -15,6 +15,7 @@ class Employeeinfo extends Model
         'email',
         'phone',
         'dob',
+        'nationality',
         'address',
         'emergency_contact',
         'department_id',
